@@ -1,1 +1,24 @@
-Use app/views/instructors/index.html.erb as a template to create a similar page for courses.
+<h1>Courses</h1>
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.course_id %></td>
+      <td><%= course.name %></td>
+      <td><%= course.description %></td>
+      <td><%= link_to 'Show', course_path(course) %></td>
+      <td><%= link_to 'Edit', edit_course_path(course) %></td>
+      <td><%= link_to 'Destroy', course_path(course),
+                    method: :delete,
+		    data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to 'Create new course', new_instructor_path %> <br>
